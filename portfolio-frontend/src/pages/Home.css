@@ -1,0 +1,37 @@
+/* Mặc định cho tên skill */
+.skill-name {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+}
+
+/* Trên thiết bị di động (không có hover chuột) */
+@media (max-width: 991px) {
+    .skill-item {
+        width: 70px; /* Thu nhỏ khoảng cách icon một chút trên mobile */
+    }
+    
+    /* Hiển thị luôn tên skill trên mobile nếu bạn muốn, 
+       hoặc giữ nguyên opacity 0 nếu muốn tối giản */
+    .skill-name {
+        position: static;
+        transform: none;
+        opacity: 0.7 !important; /* Hiện mờ mờ tên skill trên mobile */
+    }
+
+    .home-content {
+        padding-bottom: 50px; /* Tránh bị dính sát đáy */
+    }
+}
+
+/* Fix lỗi icon bị lệch khi xoay */
+.skill-icon-circle i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,99 @@
+/* AdminProjects.css */
+
+.projects-container {
+  padding: 2rem 1.5rem;
+  background: #0a0e17;
+  min-height: 100vh;
+  color: #f1f5f9;
+}
+
+.table-wrapper {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Tối ưu bảng */
+.project-table thead th {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 1rem;
+  border-bottom: 2px solid #334155 !important;
+}
+
+.project-table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-color: #334155 !important;
+}
+
+.project-img-preview {
+  width: 70px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  transition: transform 0.2s;
+}
+
+.project-img-preview:hover {
+  transform: scale(1.1);
+}
+
+/* Badge công nghệ */
+.tech-badge {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #60a5fa !important;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-weight: 500;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* Modal Styling */
+.dark-modal .modal-content {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.dark-modal .form-control, 
+.dark-modal .form-control:focus {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+}
+
+.dark-modal .form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+/* Preview Image in Form */
+.form-img-preview {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: #0a0e17;
+  border-radius: 8px;
+  border: 2px dashed #334155;
+  padding: 10px;
+}
+
+/* Button tinh chỉnh */
+.btn-action {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}

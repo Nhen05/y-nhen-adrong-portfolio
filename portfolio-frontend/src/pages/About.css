@@ -1,0 +1,126 @@
+/* Khung card chính */
+.edu-card-custom {
+
+  border: 3px solid #2d2d2d;
+  border-radius: 20px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center; /* Căn giữa logo và nội dung theo chiều dọc */
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng hover nhẹ */
+.edu-card-custom:hover {
+  background-color: #222;
+  border-color: #444;
+  cursor: pointer;
+}
+
+/* Wrapper cho logo */
+.edu-logo-box {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-logo-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Phần chữ */
+.edu-info-title {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.edu-info-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #a0a0a0; /* Màu chữ xám nhạt như ảnh */
+  font-size: 0.95rem;
+  gap: 8px;
+}
+
+.edu-dot {
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.edu-info-sub {
+  margin-top: 6px;
+  color: #666; /* Màu cho năm và địa điểm */
+  font-size: 0.85rem;
+}
+/* Giữ nguyên các style cơ bản của bạn và thêm các đoạn sau */
+
+.edu-card-custom {
+  border: 3px solid #2d2d2d;
+  border-radius: 20px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+}
+
+.edu-card-custom:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: var(--bs-primary); /* Hoặc màu chủ đạo của bạn */
+  transform: translateY(-3px);
+}
+
+.edu-logo-box {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  margin-right: 20px;
+  background: #fff; /* Tạo nền trắng cho logo nếu cần */
+  border-radius: 12px;
+  padding: 5px;
+}
+
+/* RESPONSIVE CHO TABLET & MOBILE */
+@media (max-width: 767.98px) {
+  .edu-card-custom {
+    flex-direction: column; /* Chuyển thành hàng dọc trên mobile */
+    text-align: center;
+    padding: 25px 15px;
+  }
+
+  .edu-logo-box {
+    margin-right: 0;
+    margin-bottom: 15px;
+    width: 80px; /* Tăng kích thước logo một chút khi ở giữa */
+    height: 80px;
+  }
+
+  .edu-info-details {
+    flex-direction: column; /* Các chi tiết học vấn xếp chồng lên nhau */
+    gap: 2px;
+  }
+
+  .edu-dot {
+    display: none; /* Ẩn dấu chấm khi đã xếp dọc */
+  }
+
+  .edu-info-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* Utility cho text chi tiết */
+.edu-info-details, .edu-info-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

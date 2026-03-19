@@ -1,0 +1,90 @@
+/* AdminSidebar.css */
+.admin-sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    color: #f1f5f9;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 2px 0 12px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-header h4 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admin-nav {
+    flex: 1;
+    padding: 0.75rem 0;
+}
+
+.nav-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    color: #f1f5f9;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.nav-link-item:hover {
+    background-color: rgba(255,255,255,0.06);
+}
+
+.nav-link-item.active {
+    background-color: rgba(59,130,246,0.15);
+    border-left: 4px solid #3b82f6;
+    font-weight: 600;
+}
+
+.logout-section {
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: auto;
+}
+
+.btn-logout {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: rgba(239,68,68,0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: rgba(239,68,68,0.25);
+    border-color: rgba(239,68,68,0.5);
+}
+
+/* RESPONSIVE: Khi trên màn hình nhỏ, Sidebar có thể thu hẹp hoặc ẩn */
+@media (max-width: 991.98px) {
+    .admin-sidebar {
+        width: 100%; /* Hoặc tùy chỉnh theo AdminLayout đã làm ở bước trước */
+        min-height: auto;
+    }
+}

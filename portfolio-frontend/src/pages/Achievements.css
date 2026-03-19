@@ -1,0 +1,166 @@
+.achievements-container {
+  color: #fff;
+}
+
+.section-desc {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.dashed-hr {
+  border: none;
+  border-top: 1px dashed #333;
+  margin: 1.5rem 0;
+  opacity: 1;
+}
+
+/* --- Card Styles --- */
+.cert-card {
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  border-color: #444;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cert-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: #1a1a1a;
+}
+
+.cert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.cert-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cert-id {
+  font-size: 0.7rem;
+  color: #444;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+.cert-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.cert-org {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+/* --- Tags --- */
+.cert-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto; /* Đẩy tag xuống gần footer */
+}
+
+.cert-tag {
+  background: #1a1a1a;
+  color: #888;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  border: 1px solid #222;
+}
+
+.cert-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #222;
+  font-size: 0.75rem;
+  color: #555;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+/* Thẻ select chính */
+.custom-select {
+    background-color: #1a1a1a !important;
+    height: 40px;
+    width: 200px !important;
+    color: #ffffff !important; /* Màu chữ hiển thị khi chưa chọn hoặc đã chọn */
+    border: 1.5px solid #aaa !important;
+    cursor: pointer;
+    border-radius: 12px !important;
+}
+
+/* Tùy chỉnh các mục bên trong menu xổ xuống */
+.custom-select option {
+    background-color: #1a1a1a; /* Giữ nền tối cho menu */
+    color: #ffcc00; /* ĐỔI MÀU CHỮ Ở ĐÂY - Ví dụ màu vàng */
+    padding: 10px;
+}
+
+/* Loại bỏ viền xanh mặc định của Bootstrap khi click */
+.custom-select:focus {
+    border-color: #ffcc00 !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.1) !important;
+    outline: none;
+}
+/* --- PHẦN BỔ SUNG RESPONSIVE --- */
+
+@media (max-width: 768px) {
+    /* Cho phép dòng "Total" và bộ lọc xếp chồng lên nhau */
+    .achievements-container .d-flex.justify-content-between {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+
+    /* Đẩy bộ lọc giãn rộng hết cỡ trên mobile */
+    .achievements-container .d-flex.gap-2 {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .custom-select {
+        width: 100% !important; /* Hai ô select chia đôi chiều ngang */
+        flex: 1;
+        font-size: 0.8rem !important; /* Chữ nhỏ lại một chút cho vừa màn hình mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Điện thoại cực nhỏ thì xếp chồng 2 ô select */
+    .achievements-container .d-flex.gap-2 {
+        flex-direction: column;
+    }
+    
+    .cert-title { font-size: 1rem; }
+}
+
+/* Fix màu cho Select khi ở Light Mode */
+body.is-light .custom-select {
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-color) !important;
+}
+
+body.is-light .custom-select option {
+    background-color: var(--sidebar-bg);
+    color: var(--text-main);
+}

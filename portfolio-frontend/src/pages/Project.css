@@ -1,0 +1,85 @@
+.project-image-block {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+
+/* Dark mode mặc định */
+.card-project {
+ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: #1a1a1a !important;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+/* Khi light mode */
+body.is-light .card-project {
+    background-color: var(--sidebar-bg) !important;
+}
+
+.project-image-block img {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* overlay */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+/* text view project */
+.view-project {
+    color: #ccc;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* hiện overlay */
+.card:hover .project-overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* zoom ảnh */
+.card:hover .project-image-block img {
+    transform: scale(1.06);
+}
+
+.nav-icon-arrow {
+    font-size: 18px;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .nav-icon-arrow {
+    transform: translateX(5px);
+}
+
+.project-title:hover {
+    color: #ffc107;
+
+}
+
+.prevent-select {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+    cursor: not-allowed;
+}

@@ -1,0 +1,99 @@
+/* Sidebar.css */
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    /* Cố định chiều rộng tối thiểu trên PC */
+    flex-shrink: 0;
+    /* Ngăn flexbox ép nhỏ sidebar */
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--bg-card);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+@media (min-width: 992px) {
+    .sidebar-wrapper {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+/* Mobile & Tablet Styles */
+@media (max-width: 991.98px) {
+    .sidebar{
+        background-color: var(--bg-color) !important;
+    }
+    .mobile-header {
+        background-color: var(--bg-color) !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center;
+
+        /* THAY ĐỔI THÀNH FIXED */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        z-index: 1100; /* Cao hơn sidebar để nút luôn bấm được */
+        
+        width: 100vw !important;
+        max-width: 100% !important;
+        height: 60px; /* Cố định chiều cao để dễ tính toán khoảng cách */
+
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        background: var(--bg-card);
+        border-bottom: 1px solid #333;
+        padding: 10px 20px !important;
+        box-sizing: border-box;
+    }
+
+    .sidebar {
+        display: none;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+
+        /* THAY ĐỔI VỊ TRÍ KHI HEADER ĐÃ FIXED */
+        position: fixed; /* Chuyển sang fixed để trượt từ trên xuống */
+        top: 60px; /* Bằng đúng chiều cao của mobile-header */
+        left: 0;
+        z-index: 1050;
+        
+        height: calc(100vh - 60px); /* Cao vừa đủ phần còn lại của màn hình */
+        max-height: 0;
+        overflow-y: auto; /* Cho phép cuộn bên trong menu nếu danh sách dài */
+        transition: max-height 0.5s ease-in-out;
+        
+        background-color: var(--bg-card);
+        flex: 0 0 100%;
+    }
+
+    .sidebar.show {
+        display: block;
+        max-height: calc(100vh - 60px); 
+    }
+
+    /* QUAN TRỌNG: Đẩy nội dung Dashboard xuống để không bị Header đè lên */
+    .main-content {
+        margin-top: 60px !important; 
+    }
+}
+/* Các phần khác giữ nguyên như yêu cầu */
+.sidebar-header-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item-link {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.nav-item-active {
+    background-color: var(--active-bg) !important;
+    color: var(--active-text) !important;
+    transform: translateX(4px);
+}

@@ -1,0 +1,51 @@
+/* Sidebar mặc định trên PC */
+.admin-sidebar-wrapper {
+    width: 280px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+/* Thanh điều hướng Mobile */
+.admin-mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1060;
+}
+
+/* RESPONSIVE CHO MOBILE & TABLET */
+@media (max-width: 991.98px) {
+    .admin-sidebar-wrapper {
+        position: fixed;
+        left: -280px; /* Đẩy Sidebar ra khỏi màn hình */
+        top: 0;
+        bottom: 0;
+        z-index: 1055;
+        background: #222;
+        box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+    }
+
+    .admin-sidebar-wrapper.show {
+        left: 0; /* Hiện Sidebar khi có class .show */
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1050;
+    }
+
+    .main-content-area {
+        width: 100%;
+        padding: 15px !important;
+    }
+}

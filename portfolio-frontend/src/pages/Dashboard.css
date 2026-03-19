@@ -1,0 +1,204 @@
+/* Container chung */
+.dashboard-container {
+    color: #fff;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Các thẻ thông số (Stats Card) - GIỮ NGUYÊN PC */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* THAY ĐỔI MOBILE: Trên màn hình nhỏ hơn 576px thì ép hiển thị 2 cột cho cân đối */
+@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.stat-card {
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+}
+
+.stat-label {
+    color: #777;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    color: #ffcc00;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Section Wrapper */
+.dashboard-section {
+    margin-top: 40px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.section-desc {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.dashed-line {
+    border-top: 1px dashed #333;
+    margin: 30px 0;
+}
+
+/* --- WakaTime Stats --- */
+.wakatime-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Responsive WakaTime */
+@media (max-width: 768px) {
+    .wakatime-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.lang-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px 30px;
+}
+
+/* --- Monkeytype Stats --- */
+.monkey-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.monkey-main-card, .monkey-leaderboard-card, .monkey-detail-card {
+    border: 1px solid #aaa;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+/* Tầng 1: Profile - GIỮ NGUYÊN PC 2 cột */
+.monkey-main-card {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    align-items: center;
+}
+
+.monkey-profile-box {
+    display: flex;
+    gap: 15px;
+    border-right: 2px solid #222;
+    padding-right: 20px;
+}
+
+.monkey-avatar-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #333;
+    flex-shrink: 0;
+}
+
+.monkey-img { width: 100%; height: 100%; object-fit: cover; }
+.monkey-name { color: #ffcc00; font-weight: 700; margin: 0; }
+.monkey-sub { color: #666; font-size: 0.8rem; margin: 0; }
+
+.monkey-level-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.level-num { color: #ffcc00; font-weight: bold; }
+.level-progress { flex: 1; height: 6px; background: #222; border-radius: 10px; overflow: hidden; min-width: 50px; }
+.level-fill { height: 100%; background: #fff; }
+.level-xp { font-size: 0.7rem; color: #444; }
+
+.monkey-general-stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+/* Tầng 2: Leaderboard */
+.monkey-leaderboard-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leader-title { color: #666; font-size: 0.9rem; }
+.leader-items { display: flex; gap: 40px; }
+
+/* Tầng 3: Details */
+.monkey-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap; /* Tránh tràn trên mobile cực nhỏ */
+}
+
+/* Text Utils */
+.m-label { color: #555; font-size: 0.75rem; display: block; margin-bottom: 5px; }
+.m-sub-label { color: #666; font-size: 0.8rem; display: inline-block; line-height: 1.2; margin-right: 15px; vertical-align: middle; }
+.m-value { color: #ffcc00; font-size: 1.4rem; font-weight: 700; }
+.m-unit { font-size: 0.8rem; color: #666; }
+.m-sub { color: #666; font-size: 0.9rem; display: block; margin-top: 5px; }
+
+/* --- MOBILE RESPONSIVE FIXES (THAY ĐỔI THEO Ý BẠN) --- */
+@media (max-width: 768px) {
+    .monkey-main-card, .monkey-details-grid { 
+        grid-template-columns: 1fr; /* Mobile chuyển về 1 cột */
+    }
+    .monkey-profile-box { 
+        border-right: none; 
+        border-bottom: 1px solid #222; 
+        padding-bottom: 20px; 
+        margin-bottom: 20px; 
+        padding-right: 0;
+    }
+    .monkey-leaderboard-card { 
+        flex-direction: column; 
+        gap: 15px; 
+        text-align: center; 
+    }
+    .leader-items { 
+        gap: 20px; 
+        justify-content: center;
+    }
+    .m-value {
+        font-size: 1.2rem; /* Giảm size chữ số một chút trên mobile */
+    }
+}
+
+/* Fix cuộn ngang cho GitHub Calendar */
+.github-calendar-container svg {
+    max-width: 100%;
+}

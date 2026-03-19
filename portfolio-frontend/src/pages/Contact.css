@@ -1,0 +1,171 @@
+.contact-container { padding-bottom: 5rem; }
+
+.dashed-hr {
+  border: none;
+  border-top: 1px dashed #333;
+  margin: 1.5rem 0;
+  opacity: 1;
+}
+
+.section-desc { color: #888; font-size: 0.95rem; }
+
+/* --- Social Card --- */
+.social-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-card:hover { transform: translateY(-5px); }
+
+.card-content { position: relative; z-index: 2; }
+.card-content h4 { color: #fff; font-size: 1.25rem; font-weight: 600; }
+.card-content p { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000 !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-action:hover { background: #fff; }
+
+/* --- Icons --- */
+.bg-icon-blur {
+  position: absolute;
+  top: -30px;
+  left: -40px;
+  font-size: 240px;
+  opacity: 0.04;
+  transform: rotate(35deg);
+  color: #fff;
+}
+
+.icon-badge {
+  z-index: 2;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Màu xanh đặc trưng của Facebook */
+.card-facebook { 
+  background: linear-gradient(135deg, #1877F2, #0a3d91); 
+}
+
+/* Màu đỏ đặc trưng của YouTube */
+.card-youtube { 
+  background: linear-gradient(135deg, #FF0000, #990000); 
+}
+
+/* Giữ nguyên các màu cũ cho Github và Tiktok */
+.card-github { background: linear-gradient(135deg, #0f172a, #020617); }
+.card-tiktok { background: linear-gradient(135deg, #3f3f46, #09090b); }
+.card-gmail { background: linear-gradient(135deg, #b91c1c, #450a0a); }
+
+/* --- Contact Form --- */
+.custom-input {
+  border: 1px solid #aaa !important;
+  padding: 12px 15px;
+  background-color: var(--bg-color) !important;
+  font-size: 0.9rem;
+
+}
+
+.custom-input::placeholder { color: var(--text-muted) !important; }
+.custom-input:focus {
+  border-color: #aaa !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.1);
+}
+
+.btn-send {
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+/* --- Tối ưu hiển thị Responsive --- */
+@media (max-width: 768px) {
+    .contact-container {
+        padding-bottom: 2rem;
+    }
+
+    .social-card {
+        padding: 20px;
+        min-height: 180px;
+        /* Trên mobile nhỏ, icon badge nên thu gọn */
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    .icon-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .bg-icon-blur {
+        /* Thu nhỏ icon mờ trên mobile để tránh vỡ layout */
+        font-size: 180px !important; 
+        top: -20px;
+        left: -30px;
+    }
+
+    .btn-send {
+        width: 100%; /* Nút gửi tin nhắn rộng full trên mobile */
+        text-align: center;
+    }
+}
+
+/* --- Hỗ trợ Light Mode --- */
+body.is-light .contact-container h2,
+body.is-light .contact-container h6,
+body.is-light .contact-container h5 {
+    color: var(--text-main);
+}
+
+body.is-light .custom-input {
+    background-color: #fff !important;
+    border: 1.5px solid var(--border-color) !important;
+    color: #333 !important;
+}
+
+body.is-light .custom-input:focus {
+    border-color: var(--accent-color) !important;
+}
+
+/* Điều chỉnh card Gmail trong light mode để không quá chói */
+body.is-light .card-gmail {
+    background: linear-gradient(135deg, #ea4335, #c5221f);
+}
+
+/* Border cho dashed-hr theo hệ thống */
+.dashed-hr {
+    border-top: 1px dashed var(--border-color);
+}
