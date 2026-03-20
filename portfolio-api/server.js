@@ -33,8 +33,8 @@ const __dirname = path.dirname(__filename);
 // serve frontend
 app.use(express.static(path.join(__dirname, "../portfolio-frontend/dist")));
 
-// fallback React
-app.get((req, res) => {
+// fallback React (FIX Ở ĐÂY)
+app.get("*", (req, res) => {
   res.sendFile(
     path.join(__dirname, "../portfolio-frontend/dist/index.html")
   );
