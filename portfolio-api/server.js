@@ -14,34 +14,46 @@ dotenv.config();
 
 const app = express();
 
+// connect DB
 connectDB();
 
+// middleware
 app.use(cors());
 app.use(express.json());
 
+// static uploads
 app.use("/uploads", express.static("uploads"));
 
-// API routes
+// ================= API ROUTES =================
 app.use('/api/projects', projectRouter);
 app.use('/api/auth', authRoutes);
 app.use("/api/achievements", Achievement);
 
-// fix __dirname
+// ================= FRONTEND =================
+
+// fix __dirname (ESM)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// serve frontend
-app.use(express.static(path.join(__dirname, "../portfolio-frontend/dist")));
+// path tới frontend build
+const frontendPath = path.join(__dirname, "../portfolio-frontend/dist");
 
-// fallback React (FIX Ở ĐÂY)
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../portfolio-frontend/dist/index.html")
-  );
+// serve file tĩnh (JS, CSS)
+app.use(express.static(frontendPath));
+
+// fallback cho React Router (QUAN TRỌNG NHẤT)
+app.use((req, res, next) => {
+  // nếu là API thì bỏ qua
+  if (req.path.startsWith("/api")) {
+    return next();
+  }
+
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
+// ================= SERVER =================
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, ()=>{
-    console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
