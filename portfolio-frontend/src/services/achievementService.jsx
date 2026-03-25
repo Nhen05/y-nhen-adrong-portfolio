@@ -6,18 +6,12 @@ const API_URL = `${import.meta.env.VITE_API_URL}/api/achievements`;
 // Lấy token từ localStorage (giống cách bạn làm ở project)
 const getToken = () => localStorage.getItem("token");
 
-// 1. Lấy danh sách chứng chỉ (có hỗ trợ filter)
-export const getAchievements = async (filters = {}) => {
-  try {
-    // filters ví dụ: { category: "certificate", type: "course", search: "aws" }
-    const res = await axios.get(API_URL, {
-      params: filters,
-    });
-    return res.data; // array of achievements
-  } catch (error) {
-    console.error("Lỗi khi lấy danh sách chứng chỉ:", error);
-    throw error.response?.data || { message: "Không thể lấy danh sách chứng chỉ" };
-  }
+export const getAchievements = async (filters) => {
+  const res = await axios.get(API_URL, { params: filters });
+
+  const data = res.data;
+
+  return Array.isArray(data) ? data : data.achievements;
 };
 
 // 2. Lấy chi tiết 1 chứng chỉ theo ID

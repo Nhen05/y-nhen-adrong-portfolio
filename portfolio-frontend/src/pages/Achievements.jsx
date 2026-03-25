@@ -4,7 +4,7 @@ import "./Achievements.css";
 
 const Achievements = () => {
 
-  const [certs, setCerts] = useState([]);
+setCerts(Array.isArray(data) ? data : data.achievements || []);
   const [filters, setFilters] = useState({});
 
   useEffect(() => {

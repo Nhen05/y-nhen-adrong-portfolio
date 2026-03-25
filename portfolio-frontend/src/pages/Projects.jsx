@@ -15,6 +15,7 @@ const Projects = () => {
         const data = await getProjects(page, 6);
         setProjects(data.projects);
         setPages(data.pages);
+        console.log(projects)
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
