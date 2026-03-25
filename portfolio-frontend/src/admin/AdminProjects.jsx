@@ -15,7 +15,7 @@ import {
   getProjectById,
   createProject,
   updateProject,
-  deleteProject,
+  deleteProject,  
 } from "../services/projectService";
 import './AdminProjects.css'
 const AdminProjects = () => {
@@ -252,10 +252,10 @@ const AdminProjects = () => {
                     <td>
                       {project.image ? (
                         <Image
-                          src={`http://localhost:5000${project.image}`}
+                          src={`${import.meta.env.VITE_API_URL}${project.image}`}
                           thumbnail
                           style={{ width: "80px", height: "auto", cursor: "pointer" }}
-                          onClick={() => window.open(`http://localhost:5000${project.image}`, "_blank")}
+                          onClick={() => window.open(`${import.meta.env.VITE_API_URL}${project.image}`, "_blank")}
                           alt={project.title}
                         />
                       ) : (

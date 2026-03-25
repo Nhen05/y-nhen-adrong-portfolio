@@ -1,7 +1,7 @@
 // src/api/achievementApi.js
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/achievements";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/achievements`;
 
 // Lấy token từ localStorage (giống cách bạn làm ở project)
 const getToken = () => localStorage.getItem("token");
