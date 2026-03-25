@@ -102,7 +102,7 @@ const Projects = () => {
                         );
                       })
                     ) : (
-                      <span>Chưa có tech</span>
+                      <span>No tech found</span>
                     )}
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const Projects = () => {
             </div>
           ))
         ) : (
-          <p className="text-center mt-4">Chưa có project</p>
+          <p className="text-center mt-4">No Projects Found</p>
         )}
       </div>
 
