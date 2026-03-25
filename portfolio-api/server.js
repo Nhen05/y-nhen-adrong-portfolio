@@ -28,6 +28,10 @@ app.use("/uploads", express.static("uploads"));
 app.use('/api/projects', projectRouter);
 app.use('/api/auth', authRoutes);
 app.use("/api/achievements", Achievement);
+// API FOR UPTIME ROBOT
+app.get('/api/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 // ================= FRONTEND =================
 
