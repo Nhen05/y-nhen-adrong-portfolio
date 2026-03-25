@@ -4,7 +4,8 @@ import "./Achievements.css";
 
 const Achievements = () => {
 
-setCerts(Array.isArray(data) ? data : data.achievements || []);
+  // ✅ PHẢI CÓ DÒNG NÀY
+  const [certs, setCerts] = useState([]);
   const [filters, setFilters] = useState({});
 
   useEffect(() => {
@@ -14,9 +15,17 @@ setCerts(Array.isArray(data) ? data : data.achievements || []);
   const fetchAchievements = async () => {
     try {
       const data = await getAchievements(filters);
-      setCerts(data);
+
+      // ✅ xử lý data an toàn
+      const safeData = Array.isArray(data)
+        ? data
+        : data?.achievements || [];
+
+      setCerts(safeData);
+
     } catch (error) {
       console.error("Error loading achievements:", error);
+      setCerts([]); // fallback
     }
   };
 
@@ -45,7 +54,6 @@ setCerts(Array.isArray(data) ? data : data.achievements || []);
 
       <hr className="dashed-hr" />
 
-      {/* Total + Filter */}
       <div className="d-flex justify-content-between align-items-center mb-4">
 
         <div className="text-muted small">
@@ -53,68 +61,60 @@ setCerts(Array.isArray(data) ? data : data.achievements || []);
         </div>
 
         <div className="d-flex gap-2">
-
-          {/* Category filter */}
           <select
             className="form-select form-select-sm custom-select"
             onChange={(e) => handleCategory(e.target.value)}
           >
-            <option  value="">All Category</option>
-            <option  value="frontend">Frontend</option>
-            <option  value="backend">Backend</option>
+            <option value="">All Category</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
           </select>
 
-          {/* Type filter */}
           <select
             className="form-select form-select-sm custom-select"
             onChange={(e) => handleType(e.target.value)}
           >
-            <option  value="">All Type</option>
-            <option  value="course">Course</option>
-            <option  value="professional">Professional</option>
+            <option value="">All Type</option>
+            <option value="course">Course</option>
+            <option value="professional">Professional</option>
           </select>
-
         </div>
       </div>
 
       <div className="row g-4">
-        {certs.map((cert) => (
-          <div key={cert._id} className="col-12 col-md-6 col-lg-4">
+        {Array.isArray(certs) && certs.length > 0 ? (
+          certs.map((cert) => (
+            <div key={cert._id} className="col-12 col-md-6 col-lg-4">
+              <div className="cert-card">
 
-            <div className="cert-card">
-
-              <div className="cert-img-wrapper">
-                <img
-                  src={cert.certificateUrl}
-                  alt={cert.name}
-                  className="cert-img"
-                />
-              </div>
-
-              <div className="cert-body">
-
-                <h5 className="cert-title mt-2">
-                  {cert.name}
-                </h5>
-
-                <p className="cert-org">
-                  {cert.issuer}
-                </p>
-
-                <div className="cert-tags mb-4">
-                  <span className="cert-tag">{cert.type}</span>
-                  <span className="cert-tag">{cert.category}</span>
+                <div className="cert-img-wrapper">
+                  <img
+                    src={cert.certificateUrl}
+                    alt={cert.name}
+                    className="cert-img"
+                  />
                 </div>
 
-                <div className="cert-footer">
-                  ISSUED ON {new Date(cert.issueDate).toLocaleDateString()}
+                <div className="cert-body">
+                  <h5 className="cert-title mt-2">{cert.name}</h5>
+                  <p className="cert-org">{cert.issuer}</p>
+
+                  <div className="cert-tags mb-4">
+                    <span className="cert-tag">{cert.type}</span>
+                    <span className="cert-tag">{cert.category}</span>
+                  </div>
+
+                  <div className="cert-footer">
+                    ISSUED ON {new Date(cert.issueDate).toLocaleDateString()}
+                  </div>
                 </div>
 
               </div>
             </div>
-
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No achievements found</p>
+        )}
       </div>
 
     </div>

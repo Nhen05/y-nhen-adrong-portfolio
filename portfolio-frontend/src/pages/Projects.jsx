@@ -13,11 +13,18 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const data = await getProjects(page, 6);
-        setProjects(data.projects);
-        setPages(data.pages);
-        console.log(projects)
+
+        // ✅ FIX: đảm bảo luôn là array
+        const safeProjects = Array.isArray(data)
+          ? data
+          : data?.projects || [];
+
+        setProjects(safeProjects);
+        setPages(data?.pages || 1);
+
       } catch (error) {
         console.error("Error fetching projects:", error);
+        setProjects([]); // fallback
       }
     };
 
@@ -35,66 +42,77 @@ const Projects = () => {
       <hr style={{ border: "1px dashed" }} />
 
       <div className="row mt-3 g-4">
-        {projects.map((project) => (
-          <div key={project.id} className="col-lg-6 col-md-12">
-            <div
-              className="card card-project h-100 border-0 "
-            >
-              <div className="project-image-block">
-                <img
-                  src={`${import.meta.env.VITE_API_URL}${project.image}`}
-                  className="card-img-top w-100 h-100"
-                  alt={project.title}
-                />
 
-                <div className="project-overlay">
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="view-project text-decoration-none"
+        {/* ✅ FIX: nếu không có data */}
+        {Array.isArray(projects) && projects.length > 0 ? (
+          projects.map((project) => (
+            <div key={project._id} className="col-lg-6 col-md-12">
+              <div className="card card-project h-100 border-0 ">
+                
+                <div className="project-image-block">
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}${project.image}`}
+                    className="card-img-top w-100 h-100"
+                    alt={project.title}
+                  />
+
+                  <div className="project-overlay">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="view-project text-decoration-none"
+                    >
+                      View Project
+                      <HiArrowRight className="nav-icon-arrow" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="card-body p-4">
+                  <h6 className="card-title project-title fw-700 mb-3 text-title prevent-select">
+                    {project.title}
+                  </h6>
+
+                  <p
+                    className="card-text text-muted mb-4 prevent-select"
+                    style={{ fontSize: "0.9rem" }}
                   >
-                    View Project
-                    <HiArrowRight className="nav-icon-arrow" />
-                  </a>
-                </div>
-              </div>
+                    {project.description}
+                  </p>
 
-              <div className="card-body p-4">
-                <h6 className="card-title project-title fw-700 mb-3 text-title prevent-select">
-                  {project.title}
-                </h6>
+                  <div className="d-flex gap-3 flex-wrap">
+                    {/* ✅ FIX: tech cũng phải check */}
+                    {Array.isArray(project.tech) && project.tech.length > 0 ? (
+                      project.tech.map((tech) => {
+                        const icon = getIcon(tech);
 
-                <p
-                  className="card-text text-muted mb-4 prevent-select"
-                  style={{ fontSize: "0.9rem" }}
-                >
-                  {project.description}
-                </p>
-
-                <div className="d-flex gap-3 flex-wrap">
-                  {project.tech.map((tech) => {
-                    const icon = getIcon(tech);
-
-                    return icon ? (
-                      <i
-                        key={tech}
-                        className={icon.className}
-                        style={{
-                          color: icon.color,
-                          fontSize: "22px",
-                        }}
-                        title={tech}
-                      ></i>
+                        return icon ? (
+                          <i
+                            key={tech}
+                            className={icon.className}
+                            style={{
+                              color: icon.color,
+                              fontSize: "22px",
+                            }}
+                            title={tech}
+                          ></i>
+                        ) : (
+                          <span key={tech}>{tech}</span>
+                        );
+                      })
                     ) : (
-                      <span key={tech}>{tech}</span>
-                    );
-                  })}
+                      <span>Chưa có tech</span>
+                    )}
+                  </div>
                 </div>
+
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-center mt-4">Chưa có project</p>
+        )}
       </div>
 
       {/* Pagination */}
@@ -111,8 +129,9 @@ const Projects = () => {
         {[...Array(pages)].map((_, index) => (
           <button
             key={index}
-            className={`btn ${page === index + 1 ? "btn-warning" : "btn-outline-light"
-              }`}
+            className={`btn ${
+              page === index + 1 ? "btn-warning" : "btn-outline-light"
+            }`}
             onClick={() => setPage(index + 1)}
           >
             {index + 1}
