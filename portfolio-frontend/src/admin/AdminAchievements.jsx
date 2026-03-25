@@ -50,7 +50,11 @@ const AdminAchievements = () => {
     setError(null);
     try {
       const data = await getAchievements(); // có thể truyền filters nếu cần
-      setAchievements(data);
+      const safeData = Array.isArray(data)
+        ? data
+        : data?.achievements || [];
+
+      setAchievements(safeData);
     } catch (err) {
       setError(err.message || "Không thể tải danh sách chứng chỉ");
       showAlert("Lỗi khi tải dữ liệu: " + (err.message || "Unknown error"), "danger");
@@ -205,7 +209,7 @@ const AdminAchievements = () => {
               </tr>
             </thead>
             <tbody>
-              {achievements.length === 0 ? (
+              {!Array.isArray(achievements) || achievements.length === 0 ? (
                 <tr>
                   <td colSpan="7" className="text-center py-4">
                     Chưa có chứng chỉ nào. Hãy thêm mới!
