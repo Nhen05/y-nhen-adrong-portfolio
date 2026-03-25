@@ -33,14 +33,14 @@ export default function Sidebar() {
       <div className={`sidebar p-4 ${isOpen ? 'show' : ''}`}>
         <div className="sidebar-header text-center">
           <div className="sidebar-header-avatar mx-auto">
-            <img src="avatar.jpg" alt="avatar" className="rounded-circle w-100 h-100 border border-3" />
+            <img src="avatar.jpg" alt="avatar" className="rounded-circle w-100 h-100 border " />
           </div>
           <div className="sidebar-header-info">
             <h4 className="mb-1 mt-2 fw-800">
               Y Nhen Adrong
               <MdVerified className="text-primary ms-2" title="Verified" />
             </h4>
-            <p className="sidebar-header-username text-muted">@nhendeveloper</p>
+            <p className="sidebar-header-username text-center text-muted">@nhendeveloper</p>
           </div>
           <div className="d-flex justify-content-center my-3">
             <ThemeToggle />
@@ -66,6 +66,12 @@ export default function Sidebar() {
             </NavLink>
           ))}
         </nav>
+        <hr />
+        <p className="text-center text-muted mb-0 sidebar-bottom-text">COPPYRIGHT  ©
+          2026</p>
+        <p className="text-muted mb-4 sidebar-bottom-text">
+          Y Nhen Adrong All Right Reserved.
+        </p>
       </div>
     </div>
   );

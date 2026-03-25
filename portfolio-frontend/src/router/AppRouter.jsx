@@ -11,7 +11,7 @@ import Contact from "../pages/Contact";
 import Dashboard from "../pages/Dashboard";
 
 // Admin pages
-import AdminDashboard from "../admin/Dashboard";
+import AdminDashboard from "../admin/AdminDashboard";
 import AdminProjects from "../admin/AdminProjects";
 import AdminAchievements from "../admin/AdminAchievements";
 import Login from "../admin/Login";

@@ -97,3 +97,6 @@
     color: var(--active-text) !important;
     transform: translateX(4px);
 }
+.sidebar-bottom-text{
+    font-size: 14px;
+}

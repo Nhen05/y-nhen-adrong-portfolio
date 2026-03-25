@@ -4,8 +4,8 @@ import { Table } from "react-bootstrap";
 
 import { getProjects } from "../services/projectService";       // điều chỉnh path nếu cần
 import { getAchievements } from "../services/achievementService";
-import './Dashboard.css'
-export default function Dashboard() {
+import './AdminDashboard.css'
+export default function AdminDashboard() {
   const [projectStats, setProjectStats] = useState({
     total: 0,
   });

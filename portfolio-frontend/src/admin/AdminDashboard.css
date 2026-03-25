@@ -1,7 +1,7 @@
 /* Dashboard.css */
 
 /* Container chính */
-.dashboard-container {
+.dashboard-container-admin {
   padding: 2rem 1.5rem;
   background: #0a0e17;
   min-height: 100vh;
@@ -104,7 +104,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .dashboard-container {
+  .dashboard-container-admin {
     padding: 1rem;
   }
   .dashboard-header {

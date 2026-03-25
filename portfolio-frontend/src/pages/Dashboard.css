@@ -90,7 +90,9 @@
     width: 100%;
 }
 
-.monkey-main-card, .monkey-leaderboard-card, .monkey-detail-card {
+.monkey-main-card,
+.monkey-leaderboard-card,
+.monkey-detail-card {
     border: 1px solid #aaa;
     border-radius: 16px;
     padding: 25px;
@@ -119,9 +121,23 @@
     flex-shrink: 0;
 }
 
-.monkey-img { width: 100%; height: 100%; object-fit: cover; }
-.monkey-name { color: #ffcc00; font-weight: 700; margin: 0; }
-.monkey-sub { color: #666; font-size: 0.8rem; margin: 0; }
+.monkey-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.monkey-name {
+    color: #ffcc00;
+    font-weight: 700;
+    margin: 0;
+}
+
+.monkey-sub {
+    color: #666;
+    font-size: 0.8rem;
+    margin: 0;
+}
 
 .monkey-level-bar {
     display: flex;
@@ -130,10 +146,29 @@
     margin-top: 10px;
 }
 
-.level-num { color: #ffcc00; font-weight: bold; }
-.level-progress { flex: 1; height: 6px; background: #222; border-radius: 10px; overflow: hidden; min-width: 50px; }
-.level-fill { height: 100%; background: #fff; }
-.level-xp { font-size: 0.7rem; color: #444; }
+.level-num {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+.level-progress {
+    flex: 1;
+    height: 6px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 50px;
+}
+
+.level-fill {
+    height: 100%;
+    background: #fff;
+}
+
+.level-xp {
+    font-size: 0.7rem;
+    color: #444;
+}
 
 .monkey-general-stats {
     display: flex;
@@ -148,8 +183,15 @@
     align-items: center;
 }
 
-.leader-title { color: #666; font-size: 0.9rem; }
-.leader-items { display: flex; gap: 40px; }
+.leader-title {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.leader-items {
+    display: flex;
+    gap: 40px;
+}
 
 /* Tầng 3: Details */
 .monkey-details-grid {
@@ -162,39 +204,76 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-    flex-wrap: wrap; /* Tránh tràn trên mobile cực nhỏ */
+    flex-wrap: wrap;
+    /* Tránh tràn trên mobile cực nhỏ */
 }
 
 /* Text Utils */
-.m-label { color: #555; font-size: 0.75rem; display: block; margin-bottom: 5px; }
-.m-sub-label { color: #666; font-size: 0.8rem; display: inline-block; line-height: 1.2; margin-right: 15px; vertical-align: middle; }
-.m-value { color: #ffcc00; font-size: 1.4rem; font-weight: 700; }
-.m-unit { font-size: 0.8rem; color: #666; }
-.m-sub { color: #666; font-size: 0.9rem; display: block; margin-top: 5px; }
+.m-label {
+    color: #555;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.m-sub-label {
+    color: #666;
+    font-size: 0.8rem;
+    display: inline-block;
+    line-height: 1.2;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.m-value {
+    color: #ffcc00;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.m-unit {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.m-sub {
+    color: #666;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
 
 /* --- MOBILE RESPONSIVE FIXES (THAY ĐỔI THEO Ý BẠN) --- */
 @media (max-width: 768px) {
-    .monkey-main-card, .monkey-details-grid { 
-        grid-template-columns: 1fr; /* Mobile chuyển về 1 cột */
+
+    .monkey-main-card,
+    .monkey-details-grid {
+        grid-template-columns: 1fr;
+        /* Mobile chuyển về 1 cột */
     }
-    .monkey-profile-box { 
-        border-right: none; 
-        border-bottom: 1px solid #222; 
-        padding-bottom: 20px; 
-        margin-bottom: 20px; 
+
+    .monkey-profile-box {
+        border-right: none;
+        border-bottom: 1px solid #222;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
         padding-right: 0;
     }
-    .monkey-leaderboard-card { 
-        flex-direction: column; 
-        gap: 15px; 
-        text-align: center; 
+
+    .monkey-leaderboard-card {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
-    .leader-items { 
-        gap: 20px; 
+
+    .leader-items {
+        gap: 20px;
         justify-content: center;
     }
+
     .m-value {
-        font-size: 1.2rem; /* Giảm size chữ số một chút trên mobile */
+        font-size: 1.2rem;
+        /* Giảm size chữ số một chút trên mobile */
     }
 }
 
